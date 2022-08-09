@@ -1,0 +1,25 @@
+
+
+*{
+   box-sizing: border-box;
+   padding: 0;
+   margin: 0;
+}
+.bg-button{
+   background: rgb(100,56,203);
+   background: linear-gradient(0deg, rgba(100,56,203,1) 0%, rgba(45,85,253,1) 100%);
+
+}
+.img-fluid{
+   border-radius: 30px;
+}
+.bg-blue{
+   background:url(/HTML/assets/signup.gif);
+   background-size: cover;
+   background-repeat: no-repeat;
+
+}
+.bg-gradient1{
+   background: url(/HTML/assets/navhome.jpg);
+   background-size: cover;
+  }

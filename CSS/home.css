@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.bg-gradient1{
+ background: url(/HTML/assets/navhome.jpg);
+ background-size: cover;
+}
+.card img{
+    height: 200px;
+}
+ul li a:hover{
+color: brown;
+}
+body{
+    background: url(/HTML/assets/homeback.webp);
+    background-size: cover;
+}

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Homepage</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://kit.fontawesome.com/383ab0b775.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+  <link rel="stylesheet" href="/CSS/student_list.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg   bg-gradient1 ">
+    <div class="container px-5">
+      <img src="assets/logo.webp" width="40" alt="" class="d-inline-block align-middle mr-2 progress-bar-animated">
+
+      <a class="navbar-brand ps-2 text-white" href="#">School</a>
+      <button class="navbar-toggler text-dark bg-primary" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon "></span></button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0  ">
+          <li class="nav-item"><a class="nav-link active text-white" aria-current="page" href="home.html">Home</a></li>
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link text-white " data-bs-toggle="dropdown">Teachers</a>
+            <div class="dropdown-menu bg-gradient1">
+              <a href="teacher_list.html" class="dropdown-item text-white">Teacher List</a>
+              <a href="create_teacher.html" class="dropdown-item text-white">Create Teacher Profile</a>
+            </div>
+          </div>
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link text-white fw-bold active " data-bs-toggle="dropdown">Students</a>
+            <div class="dropdown-menu bg-gradient1">
+              <a href="student_list.html" class="dropdown-item text-white">Student List</a>
+              <a href="create_student.html" class="dropdown-item text-white">Create Student Profile</a>
+            </div>
+          </div>
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link text-white " data-bs-toggle="dropdown">Workers</a>
+            <div class="dropdown-menu bg-gradient1">
+              <a href="worker_list.html" class="dropdown-item text-white">Workers List</a>
+              <a href="create_worker.html" class="dropdown-item text-white">Create Worker Profile</a>
+            </div>
+          </div>
+
+          <li class="nav-item">
+            <a class="nav-link btn text-white" href="signin.html">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class=" row ">
+    <div class="col-10   ms-auto me-auto d-flex  justify-content-between   mt-4 ">
+      <h3 class=" fw-bold">List of Students </h3> 
+       <a href="create_teacher.html"class="btn btn-success "><i class="fa-solid fa-plus pe-2 "></i>Add Student </a>
+      
+  </div>
+    <div class="row">
+      <div class="col-md-11 col-sm-12 mt-2 ms-auto me-auto">
+        <div class="table-responsive">
+
+            <table class="table table-responsive table-striped table-brown">
+          <thead class="bg-blue text-white">
+            <tr>
+              <th scope="col">S.No</th>
+              <th scope="col">Name</th>
+              <th scope="col">Father Name</th>
+              <th scope="col">DOB</th>
+              <th scope="col">Class</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Akaran</td>
+              <td>N.Aravindhan</td>
+              <td>28/05/2020</td>
+              <td>P.K.G</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>S.Jaiveer</td>
+              <td>S.Subandhiran</td>
+              <td>05/05/2016</td>
+              <td>II Standard</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>K.Rethula Sri</td>
+              <td>T.KaveriSelvan</td>
+              <td>22/03/2017</td>
+              <td>I Standard</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>S.Aruli</td>
+              <td>S.Sasikumar</td>
+              <td>12/07/2007</td>
+              <td>XII Standard</td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>S.Yazhini</td>
+              <td>S.Sasikumar</td>
+              <td>12/10/2010</td>
+              <td>VIII Standard</td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td>S.Nandha Kumar</td>
+              <td>S.Sasikumar</td>
+              <td>08/05/2011</td>
+              <td>VIII Standard</td>
+            </tr>
+            <tr>
+              <th scope="row">7</th>
+              <td>C.Kaviyarasan</td>
+              <td>K.Venba</td>
+              <td>09/07/2012</td>
+              <td>V Standard</td>
+            </tr>
+            <tr>
+              <th scope="row">8</th>
+              <td>D.Tamilvanan</td>
+              <td>T.Dharunika</td>
+              <td>28/12/2011</td>
+              <td>VI Standard</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class=" footer  d-flex flex-column mb-0 py-4 px-4 px-xl-5 mt-4 bg-gradient1">
+    <div class="text-white text-center mb-md-0 ">
+      Copyright © 2022. All rights reserved.
+    </div>
+  </div>
+</body>
+
+</html>

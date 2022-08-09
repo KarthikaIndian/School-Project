@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #d7eefa;
+    
+}
+.bg-image{
+    
+background: url(/HTML/assets/download.jfif);
+
+
+box-sizing: border-box;
+background-size: cover;
+}
+.bg-pink{
+    background: rgb(13 109 253 / 23%);
+}
+img{
+    background-size: cover;
+  
+}
+.bg-header{
+    background: #45fcf6;
+   
+
+    background-image: linear-gradient(90deg, #020024 0%, #090979 35%, #00d4ff 100%);
+}
