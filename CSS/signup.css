@@ -23,3 +23,6 @@
    background: url(/HTML/assets/navhome.jpg);
    background-size: cover;
   }
+  .error{
+   color: red;
+  }

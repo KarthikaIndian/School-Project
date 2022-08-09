@@ -5,6 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bootstrap 5 Login Form Example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
@@ -25,16 +27,16 @@
             <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
               <h3 class="fs-2 fw-normal mb-3 me-3">Sign in</h3>
             </div>
-            <div class="input-group form-group">
+            <div class="input-group form-group" id="email">
               <div class="input-group-prepend">
-                <span class="input-group-text">  <i class="bi bi-envelope-fill"></i></span>
+                <span class="input-group-text">  <i class="bi bi-envelope-fill p-1"></i></span>
               </div>
-              <input type="text" class="form-control " placeholder="Enter a Valid Email Address">
+              <input type="text" class="form-control " placeholder="Enter a Valid Email Address" >
             </div>
            
 
            
-            <div class="input-group form-group my-4">
+            <div class="input-group form-group my-4"  id="password">
               <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="bi bi-key-fill p-1"></i></span>
               </div>
@@ -45,7 +47,7 @@
             <div class="d-flex justify-content-between align-items-center">
 
               <div class="form-check mb-0">
-              <input class="form-check-input me-2" type="checkbox" value="" id="checkbox" />
+              <input class="form-check-input me-2" type="checkbox" value="" id="sbox" />
                 <label>
                   Remember me
                 </label>
@@ -54,7 +56,7 @@
             </div>
 
             <div class="text-center text-lg-start mt-4 pt-2 pb-5">
-             <a href="home.html"> <button type="button" class="btn btn-primary btn-lg rounded-pill signbutton">Login</button></a>
+             <a href="" class="btn btn-primary btn-lg rounded-pill " id="submit">Login</a>
               <p class="lead fw-normal mt-2 pt-1 mb-0">Don't have an account? <a href="signup.html" class="link-danger">Sign
                   Up</a></p>
             </div>
@@ -62,12 +64,14 @@
         </div>
       </div>
     </div>
+  
     <div class="d-flex flex-column mb-0 py-4 px-4 px-xl-5 bg-primary">
       <div class="text-white text-center mb-md-0">
         Copyright © 2022. All rights reserved.
       </div>
     </div>
   </section>
+  <script src="/JS/signin.js"></script>
 </body>
 
 </html>

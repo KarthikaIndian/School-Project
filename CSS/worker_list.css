@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  
+}
+.bg-gradient1{
+ background: url(/HTML/assets/navhome.jpg);
+ background-size: cover;
+
+}
+.card img{
+    height: 200px;
+}
+ul li a:hover{
+color: brown;
+}
+.bg-blue{
+    background-color: #055160;
+}
+.table-brown{
+    background-color:  rgb(13 110 253 / 25%);
+}
+body{
+    background: url(/HTML/assets/teacherlist.webp);
+}
+@media (min-width:320px)and(max-width:425) {
+    .table{
+        width: 100%;
+    }
+    
+}
