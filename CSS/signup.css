@@ -1,28 +1,25 @@
-
-
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Roboto:wght@100;400;700&display=swap');
 *{
    box-sizing: border-box;
    padding: 0;
    margin: 0;
-}
-.bg-button{
-   background: rgb(100,56,203);
-   background: linear-gradient(0deg, rgba(100,56,203,1) 0%, rgba(45,85,253,1) 100%);
-
+   font-family: 'Roboto';
 }
 .img-fluid{
    border-radius: 30px;
 }
-.bg-blue{
-   background:url(/HTML/assets/signup.gif);
-   background-size: cover;
-   background-repeat: no-repeat;
 
-}
-.bg-gradient1{
-   background: url(/HTML/assets/navhome.jpg);
-   background-size: cover;
-  }
+
   .error{
    color: red;
   }
+  .bg-lightgray{
+   border-bottom: 1px solid #adb0b31c ;
+   background-color: #adb0b31c ;
+}
+@media (min-width:1024px) and (max-width:1400px) {
+   *{
+      overflow: hidden;
+   }
+   
+}

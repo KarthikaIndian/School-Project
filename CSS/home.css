@@ -1,19 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Roboto:wght@100;400;700&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto';
 }
-.bg-gradient1{
- background: url(/HTML/assets/navhome.jpg);
- background-size: cover;
+
+.bg-lightgray{
+    border-bottom: 1px solid #adb0b31c ;
+    background-color: #adb0b31c ;
+
 }
 .card img{
     height: 200px;
 }
-ul li a:hover{
+.active:hover{
 color: brown;
 }
-body{
-    background: url(/HTML/assets/homeback.webp);
-    background-size: cover;
+
+.img_height{
+    height: 40px;
+
 }
+.active{
+    border-bottom: 3px solid purple !important;
+}
+.nav-item a:hover{
+    background-color: rgb(187, 194, 240);
+   font-weight: bolder;
+  }
+  

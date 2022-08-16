@@ -1,25 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Roboto:wght@100;400;700&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+    font-family: 'Roboto'; 
 }
+.bg-lightgray{
+    border-bottom: 1px solid #adb0b31c ;
+    background-color: #adb0b31c ;
+}
+
 .bg-gradient1{
- background: url(/HTML/assets/navhome.jpg);
- background-size: cover;
+ background-color: lightgray;
+ 
 }
 .card img{
     height: 200px;
 }
-ul li a:hover{
-color: brown;
-}
-.bg-blue{
-    background-color: #055160;
-}
 
+
+.img_height{
+    height: 40px;
+
+}
+.active{
+    border-bottom: 3px solid purple !important;
+}
+.nav-item a:hover{
+    background-color: rgb(187, 194, 240);
+    font-weight: bolder;
+  }
+  
+
+.card img{
+    height: 200px;
+}
+.date{
+    text-transform:uppercase !important;
+}
+input{
+    margin: 10px;
+ }
+ textarea{
+     margin: 10px;
+ }
+ select{
+     margin: 10px;
+ }
+ .error{
+    color: red;
+    padding-left:10px ;
+   }
 .table-brown{
     background-color:  rgb(13 110 253 / 25%);
+}
+.border{
+    border: 0;
+    margin: 0;
+    padding: 0;
 }
 @media screen and (max-width: 500px) {
     .table {
