@@ -1,61 +1,75 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Roboto:wght@100;400;700&display=swap');
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto';
 }
-.bg-lightgray{
-    border-bottom: 1px solid #adb0b31c ;
-    background-color: #adb0b31c ;
+
+.bg-lightgray {
+    border-bottom: 1px solid #adb0b31c;
+    background-color: #adb0b31c;
+}
+
+.date {
+    text-transform: uppercase !important;
+}
+
+.bg-gradient1 {
+    background-color: lightgray;
+}
+
+.img_height {
+    height: 40px;
 
 }
-.date{
-    text-transform:uppercase !important;
-}
-.bg-gradient1{
-    background-color: lightgray;
-   }
-   
-.img_height{
-    height: 40px;
-   
-   }
-.active{
+
+.bottom {
     border-bottom: 3px solid purple !important;
 }
-.nav-item a:hover{
+
+.nav-item a:hover {
     background-color: rgb(187, 194, 240);
     font-weight: bolder;
-  }
-  
-.error{
-    color: red;
-    padding-left:10px ;
-   }
-input{
-    margin: 10px;
- }
- textarea{
-     margin: 10px;
- }
- select{
-     margin: 10px;
- }
+}
 
-.card img{
+.error {
+    color: red;
+    padding-left: 10px;
+}
+
+input {
+    margin: 10px;
+}
+
+textarea {
+    margin: 10px;
+}
+
+select {
+    margin: 10px;
+}
+
+label {
+    margin: 10px;
+}
+
+.card img {
     height: 200px;
 }
-ul li a:hover{
-color: brown;
+
+ul li a:hover {
+    color: brown;
 }
-.table-brown{
-    background-color:  rgb(13 110 253 / 25%);
+
+.table-brown {
+    background-color: rgb(13 110 253 / 25%);
 }
 
 @media (min-width:320px)and(max-width:425) {
-    .table{
+    .table {
         width: 100%;
     }
-    
+
 }

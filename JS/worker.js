@@ -1,5 +1,14 @@
 
 $(document).ready(function(){
+  worker =localStorage.getItem("worker")?JSON.parse(localStorage.getItem("worker")):[];
+  let j=1;
+  for (let i = 0; i < worker.length; i++) {
+ 
+      let row="<tr><td>"+j++ +"</td><td>"+worker[i].Name+"</td><td>"+worker[i].age+"</td><td>"+worker[i].phoneNumber+"</td><td>"+worker[i].email+
+      "</td><td>"+worker[i].jobPosition+"</td><td>"+worker[i].joningDate+"</td></tr>";
+  
+       $("#tbody").append(row)
+  }
   $('#submit').click(function(e){
     e.preventDefault();
   let uname=$('#firstName').val();
@@ -79,7 +88,7 @@ if(experience==''){
   flag=true
 }
 if(!gender){
-  $('#genderErrorId').after('<span class="error">This field is required</span>')
+  $('#genderErrorId').after('<span class="error gendererror">This field is required</span>')
   flag=false;
 }else{
   flag=true
@@ -126,21 +135,18 @@ if (check.length == 0) {
   flag = true;
   
 }
-  // $(".first-tr").after( '<tr><td>'+uname+'</td><td>'+phoneNumber+'</td><td>'+email+'</td><td>'
-// +bloodGroup+'</td><td>'+age+'</td><td>'+experience+
-// '</td><td>'+qualification+'</td><td>'+state+'</td><td>'+country+'</td><td>'+language+'</td><td>'
-// +Address+'</td><td>'+DoB+'</td><td>'+jonningDate+'</td></tr>');
 let Address={address,pinCode}
 let result={uname,phoneNumber,email,bloodGroup,age,experience,gender,Address,joningDate};
   console.log(result)
-
+  if(flag){
   let workerList={'Name':uname,'lastName':lastName,'gender':gender,'phoneNumber':phoneNumber,
-  'email':email,'age':age,'Address':Address,'experience':'experience',
+  'email':email,'age':age,'Address':Address,'experience':experience,'jobPosition':jobPosition,
  'joningDate':joningDate,'bloodGroup':bloodGroup};
+ worker.push(workerList)
+
+  localStorage.setItem('worker', JSON.stringify(worker));
   
-  localStorage.setItem('workerList', JSON.stringify(workerList));
-  
- if(flag){
+
   debugger
   window.location.href="worker_list.html"
 }

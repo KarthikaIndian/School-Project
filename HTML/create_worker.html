@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <title>Create Worker</title>
     <meta charset="utf-8">
@@ -15,6 +16,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
     <link rel="stylesheet" href="/CSS/worker_list.css">
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg nav  bg-lightgray  ">
         <div class="container ">
@@ -30,28 +32,27 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link  text-dark dropdown-toggle   "
                             data-bs-toggle="dropdown">Teachers</a>
-                        <div class="dropdown-menu bg-lightgray">
-                            <a href="teacher_list.html" class="dropdown-item ">Teacher List</a>
+                        <div class="dropdown-menu">
+                            <a href="teacher_list.html" class="dropdown-item ">Teachers List</a>
                             <a href="create_teacher.html" class="dropdown-item ">Create Teacher</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link  text-dark  dropdown-toggle  "
                             data-bs-toggle="dropdown">Students</a>
-                        <div class="dropdown-menu bg-lightgray">
-                            <a href="student_list.html" class="dropdown-item ">Student List</a>
+                        <div class="dropdown-menu ">
+                            <a href="student_list.html" class="dropdown-item ">Students List</a>
                             <a href="create_student.html" class="dropdown-item ">Create Student</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link   text-dark fw-bold active dropdown-toggle "
+                        <a href="#" class="nav-link   text-dark fw-bold bottom dropdown-toggle "
                             data-bs-toggle="dropdown">Workers</a>
-                        <div class="dropdown-menu bg-lightgray">
+                        <div class="dropdown-menu">
                             <a href="worker_list.html" class="dropdown-item ">Workers List</a>
                             <a href="create_worker.html" class="dropdown-item ">Create Worker </a>
                         </div>
                     </div>
-
                     <li class="nav-item">
                         <a class="nav-link btn text-dark" href="signin.html">Logout</a>
                     </li>
@@ -59,14 +60,16 @@
             </div>
         </div>
     </nav>
-    <div class="container rounded  mt-4 mb-5">
+    <div class="container rounded  mt-4 ">
         <div class="row ">
             <div class=" d-flex justify-content-between">
-                <span class=" fw-bold fs-3"><u>Create Worker</u></span><a href="/HTML/worker_list.html"
-                    class="btn btn-primary px-4 py-2">Back</a>
+                <span class=" fw-bold fs-3"><u>Create Worker</u></span>
+                <a href="/HTML/worker_list.html" class="btn btn-primary px-4 py-2">Back</a>
             </div>
-            <div class="col-md-12 ">
-                <div class="row mt-2">
+        </div>
+        <form>
+            <div class="col-md-12  mt-2">
+                <div class="row mt-2 mb-2">
                     <div class="col-md-4">
                         <input type="text" class="form-control" placeholder="First name" value="" id="firstName">
                     </div>
@@ -84,22 +87,22 @@
                     </div>
                     <div class="col-md-4">
                         <select class="form-select" id="experiance">
-                            <option value="">Select your Experiance </option>
-                            <option >0 - 1 Year</option>
+                            <option value="">Select your experiance </option>
+                            <option>0 - 1 Year</option>
                             <option>1 - 2 year</option>
                             <option>2 - 3 year</option>
                             <option>3 - 4 year</option>
                             <option>more then 5 year</option>
                         </select>
                     </div>
-                    <div class="col-md-4 ps-4 pt-3"><label>Gender :</label>
-                        <input type="radio" name="gender" value="Male" class="ms-4 gender" />Male
-                        <input type="radio" name="gender" value="Female" class="ms-4 gender" />Female<br>
-                    <span  id="genderErrorId"  ></span>
+                    <div class="col-md-4 ps-3 pt-1"><label>Gender :</label>
+                        <input type="radio" name="gender" value=" Male" class=" gender" />Male
+                        <input type="radio" name="gender" value=" Female" class=" gender" />Female<br>
+                        <span id="genderErrorId"></span>
                     </div>
                     <div class="col-sm-12  col-md-4">
                         <select class="form-select " id="bloodGroup">
-                            <option value="" >Select your blood group </option>
+                            <option value="">Select your blood group </option>
                             <option>O+</option>
                             <option>O-</option>
                             <option>A+</option>
@@ -112,7 +115,7 @@
                     </div>
                     <div class="col-md-4">
                         <select class="form-select " id="jobPosition">
-                            <option value="" > job position </option>
+                            <option value=""> Select your job position </option>
                             <option>Driver</option>
                             <option>Cleaner</option>
                             <option>Attender </option>
@@ -127,21 +130,20 @@
                     </div>
                     <div class="col-md-4"><label>Joining Date</label>
                         <input type="date" class="form-control date" value="" id="joiningDate">
-
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <input type="checkbox" placeholder="" id="check">If all information correct submit
                         <span id=tick></span>
                     </div>
                 </div>
-                <div class="d-flex justify-content-end gap-3">
-                    <button class="btn btn-danger px-3 " type="button">Cancel</button>
+                <div class="d-flex justify-content-end gap-3 ">
+                    <button class="btn btn-danger px-3 " type="reset">Cancel</button>
                     <button class="btn btn-success px-3" type="button" id="submit">Submit</button>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
-    <div class=" footer mt-5 d-flex flex-column mb-0 py-4 px-4 px-xl-5 bg-lightgray">
+    <div class=" footer mt-5 d-flex flex-column mb-0 py-4 px-4 px-xl-5  bg-lightgray">
         <div class="text-center mb-md-0 ">
             Copyright © 2022. All rights reserved.
         </div>

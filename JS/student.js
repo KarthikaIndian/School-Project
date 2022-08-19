@@ -1,42 +1,60 @@
 $(document).ready(function () {
+ student =localStorage.getItem("student")?JSON.parse(localStorage.getItem("student")):[];
+  let j=1;
+  console.log(student)
+  for (let i = 0; i < student.length; i++) {
+    let date=student[i].dob;
+   var dateAr = date.split('-');
+var date_string = dateAr[2] + '-' + dateAr[1] + '-' + dateAr[0];
+        let row="<tr><td>"+j++ +"</td><td>"+student[i].studentname+"</td><td>"+student[i].fathername+"</td><td>"
+      +date_string+"</td><td>"+student[i].standard+"</td><td>"+student[i].phonenumber+"</td><td>"+student[i].bloodgroup+"</td></tr>";
+  
+       $("#tbody").append(row)
+  }
   $("#submit").click(function (e) {
     e.preventDefault();
-    let studentName = $("#name").val();
-    let fatherName = $("#fatherName").val();
-    let motherName = $("#motherName").val();
+    let studentname = $("#name").val();
+    let fathername = $("#fatherName").val();
+    let mothername = $("#motherName").val();
     let standard = $("#standard").val();
-    let phoneNumber = $("#phoneNumber").val();
+    let phonenumber = $("#phoneNumber").val();
     let gender = $("input[name='gender']:checked").val();
     let address = $("#address").val();
     let city = $("#city").val();
     let state = $("#state").val();
-    let pinCode = $("#pinCode").val();
-    let language = $(".language").is(":checked");
-    let dob = $("#dob").val();
-    let bloodGroup = $("#bloodGroup").val();
-    let eightBoard = $("#eightBoard").val();
-    let eightPercentage = $("#eightPercentage").val();
-    let eigthPassing = $("#eigthPassing").val();
-    let tenthBoard = $("#tenthBoard").val();
-    let tenthPercentage = $("#tenthPercentage").val();
-    let tenthPassing = $("#tenthPassing").val();
+    let pincode = $("#pinCode").val();
+    let language= $(".language").is(":checked");;
+    let dob =$("#dob").val();
+    let bloodgroup = $("#bloodGroup").val();
+    let eightboard = $("#eightBoard").val();
+    let eightpercentage = $("#eightPercentage").val();
+    let eigthpassing = $("#eigthPassing").val();
+    let tenthboard = $("#tenthBoard").val();
+    let tenthpercentage = $("#tenthPercentage").val();
+    let tenthpassing = $("#tenthPassing").val();
+    let check = $("#check:checked");
+    if (language) {
+      var languages = [];
+      $(".language:checked").each(function (i) {
+        language[i] = $(this).val();
+       
+      });
+    }
     $(".error").remove();
     let flag = false;
-    if (studentName.length < 1) {
+    if (studentname.length < 1) {
       $("#name").after('<span class="error">This field is required</span>');
       flag = false;
     } else {
       flag = true;
     }
-    if (fatherName.length < 1) {
-      $("#fatherName").after(
-        '<span class="error">This field is required</span>'
-      );
+    if (fathername.length < 1) {
+      $("#fatherName").after('<span class="error">This field is required</span>');
       flag = false;
     } else {
       flag = true;
     }
-    if (motherName.length < 1) {
+    if (mothername.length < 1) {
       $("#motherName").after(
         '<span class="error">This field is required</span>'
       );
@@ -50,12 +68,12 @@ $(document).ready(function () {
     } else {
       flag = true;
     }
-    if (phoneNumber.length < 1) {
+    if (phonenumber.length < 1) {
       $("#phoneNumber").after(
         '<span class="error">This field is required</span>'
       );
       flag = false;
-    } else if (phoneNumber.length < 10) {
+    } else if (phonenumber.length < 10) {
       $("#phoneNumber").after(
         '<span class="error">Phone number must be 10 digit</span>'
       );
@@ -64,7 +82,7 @@ $(document).ready(function () {
     }
     if (!gender) {
       $(".genderErrorId").after(
-        '<span class="error">This field is required</span>'
+        '<span class="error">Please select any one</span>'
       );
       flag = false;
     } else {
@@ -88,33 +106,25 @@ $(document).ready(function () {
     } else {
       flag = true;
     }
-    if (pinCode.length < 1) {
+    if (pincode.length < 1) {
       $("#pinCode").after('<span class="error">This field is required</span>');
       flag = false;
     } else {
       flag = true;
     }
-    if (fatherName.length < 1) {
-      $("#fatherName").after(
-        '<span class="error">This field is required</span>'
-      );
+    if(language==" "){
+      $("#language").after('<span class="error">Please choose atleast 2 laguages</span>');
       flag = false;
-    } else {
+  } else{
       flag = true;
-    }
-    if (language == "") {
-      $("#language").after('<span class="error">This field is required</span>');
-      flag = false;
-    } else {
-      flag = true;
-    }
+  }
     if (dob < 1) {
       $("#dob").after('<span class="error">This field is required</span>');
       flag = false;
     } else {
       flag = true;
     }
-    if (bloodGroup == "") {
+    if (bloodgroup == "") {
       $("#bloodGroup").after(
         '<span class="error">This field is required</span>'
       );
@@ -122,25 +132,45 @@ $(document).ready(function () {
     } else {
       flag = true;
     }
-    let Address = { address, city, state, pinCode };
-    let Eight_Standard = { eightBoard, eightPercentage, eigthPassing };
-    let Tenth_Standard = { tenthBoard, tenthPercentage, tenthPassing };
+    if (check.length == 0) {
+      $("#tick").after('<div class="error">This field is required</div>');
+      flag = false;
+    } else {
+      flag = true;
+    }
+    let Address = { address, city, state, pincode };
+    let Eight_Standard = { eightboard, eightpercentage, eigthpassing };
+    let Tenth_Standard = { tenthboard, tenthpercentage, tenthpassing };
     let Qualification = { Eight_Standard, Tenth_Standard };
-    let result = {
-      studentName,
-      fatherName,
-      motherName,
-      phoneNumber,
+    let result = { studentname,
+      fathername,
+      mothername,
+      phonenumber,
       standard,
       gender,
       Address,
       language,
       dob,
-      bloodGroup,
+      bloodgroup,
       Qualification,
     };
-    console.log(result);
     if (flag) {
+    let studentList = { studentname:studentname,
+      fathername:fathername,
+      mothername:mothername,
+      phonenumber:phonenumber,
+      standard:standard,
+      dob:dob,
+      bloodgroup:bloodgroup,
+      Qualification:Qualification,
+      Address:Address
+    };
+    student.push(studentList)
+
+    localStorage.setItem("student", JSON.stringify(student));
+
+    console.log(result);
+ 
       debugger;
       window.location.href = "student_list.html";
     }

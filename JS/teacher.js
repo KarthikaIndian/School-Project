@@ -1,12 +1,27 @@
 $(document).ready(function () {
+//   $('#table').DataTable({
+//     pagingType: 'full_numbers',
+// });
+  teacher =localStorage.getItem("teacher")?JSON.parse(localStorage.getItem("teacher")):[];
+  let j=1;
+  for (let i = 0; i < teacher.length; i++) {
+    let date=teacher[i].joningdate;
+    var dateAr = date.split('-');
+ var date_string = dateAr[2] + '-' + dateAr[1] + '-' + dateAr[0];
+      let row="<tr><td>"+j++ +"</td><td>"+teacher[i].name+"</td><td>"+teacher[i].phonenumber+"</td><td>"+teacher[i].email+
+      "</td><td>"+teacher[i].qualification+"</td><td>"+date_string+"</td></tr>";
+  
+       $("#tbody").append(row)
+  }
+ 
   $("#submit").click(function (e) {
     e.preventDefault();
-    let uname = $("#firstName").val();
-    let lastName = $("#lastName").val();
-    var gender = $("input[name='gender']:checked").val();
-    let phoneNumber = $("#phoneNumber").val();
+    let name = $("#firstName").val();
+    let lastname = $("#lastName").val();
+    let gender = $("input[name='gender']:checked").val();
+    let phonenumber = $("#phoneNumber").val();
     let email = $("#emailId").val();
-    let bloodGroup = $("#bloodGroup").val();
+    let bloodgroup = $("#bloodGroup").val();
     let age = $("#age").val();
     let experience = $("#experiance").val();
     let qualification = $("#qualification").val();
@@ -14,8 +29,8 @@ $(document).ready(function () {
     let country = $("#country").val();
     let language = $(".language").is(":checked");
     let address = $("#address").val();
-    let pinCode = $("#pincode").val();
-    let joningDate = $("#joiningDate").val();
+    let pincode = $("#pincode").val();
+    let joningdate = $("#joiningDate").val();
     let check = $("#check:checked");
     let flag = false;
     let regEx =
@@ -23,13 +38,12 @@ $(document).ready(function () {
     let validEmail = regEx.test(email);
     $(".error").remove();
     if (language) {
-      var val = [];
+      var languages = [];
       $(".language:checked").each(function (i) {
-        val[i] = $(this).val();
-        console.log(val[i]);
+        language[i] = $(this).val();
       });
     }
-    if (uname.length < 1) {
+    if (name.length < 1) {
       $("#firstName").after(
         '<span class="error">This field is required</span>'
       );
@@ -37,18 +51,18 @@ $(document).ready(function () {
     } else {
       flag = true;
     }
-    if (lastName.length < 1) {
+    if (lastname.length < 1) {
       $("#lastName").after('<span class="error">This field is required</span>');
       flag = false;
     } else {
       flag = true;
     }
-    if (phoneNumber.length < 1) {
+    if (phonenumber.length < 1) {
       $("#phoneNumber").after(
         '<span class="error">This field is required</span>'
       );
       flag = false;
-    } else if (phoneNumber.length < 10) {
+    } else if (phonenumber.length < 10) {
       $("#phoneNumber").after(
         '<span class="error">Phone number must be 10 digit</span>'
       );
@@ -67,7 +81,7 @@ $(document).ready(function () {
     } else {
       flag = true;
     }
-    if (bloodGroup == "select") {
+    if (bloodgroup == "select") {
       $("#bloodGroup").after(
         '<span class="error">This field is required</span>'
       );
@@ -122,7 +136,7 @@ $(document).ready(function () {
       flag = true;
     }
 
-    if (language == "") {
+    if (language == " ") {
       $("#language").after('<span class="error">This field is required</span>');
       flag = false;
     } else {
@@ -134,10 +148,10 @@ $(document).ready(function () {
     } else {
       flag = true;
     }
-    if (pinCode < 1) {
+    if (pincode < 1) {
       $("#pincode").after('<span class="error">This field is required</span>');
       flag = false;
-    } else if (pinCode < 6) {
+    } else if (pincode < 6) {
       $("#pincode").after(
         '<span class="error">Pincode  must be 6 digit</span>'
       );
@@ -145,7 +159,7 @@ $(document).ready(function () {
     } else {
       flag = true;
     }
-    if (joningDate.length < 1) {
+    if (joningdate.length < 1) {
       $("#joiningDate").after(
         '<span class="error">This field is required</span>'
       );
@@ -159,45 +173,46 @@ $(document).ready(function () {
     } else {
       flag = true;
     }
-    // $(".first-tr").after( '<tr><td>'+uname+'</td><td>'+phoneNumber+'</td><td>'+email+'</td><td>'
+    // $(".first-tr").after( '<tr><td>'+name+'</td><td>'+phoneNumber+'</td><td>'+email+'</td><td>'
     // +bloodGroup+'</td><td>'+age+'</td><td>'+experience+
     // '</td><td>'+qualification+'</td><td>'+state+'</td><td>'+country+'</td><td>'+language+'</td><td>'
     // +Address+'</td><td>'+DoB+'</td><td>'+jonningDate+'</td></tr>');
-    let Address = { address, state, country, pinCode };
+    let Address = { address, state, country, pincode };
     let result = {
-      uname,
+      name,
       phoneNumber,
       email,
-      bloodGroup,
+      bloodgroup,
       age,
       experience,
       gender,
       qualification,
       Address,
-      val,
-      joningDate,
+      languages,
+      joningdate,
     };
     console.log(result);
-
-    console.log(result);
-    let teacherList = {
-      Name: uname,
-      lastName: lastName,
-      gender: gender,
-      phoneNumber: phoneNumber,
-      email: email,
-      age: age,
-      Address: Address,
-      experience: "experience",
-      qualification: qualification,
-      language: val,
-      joningDate: joningDate,
-      bloodGroup: bloodGroup,
-    };
-
-    localStorage.setItem("teacherList", JSON.stringify(teacherList));
-
     if (flag) {
+    
+    let teacherlist = {
+      'name': name,
+      'lastname': lastname,
+      'gender': gender,
+      'phonenumber': phonenumber,
+     'email': email,
+      'age': age,
+      'address': Address,
+      'experience': experience,
+      'qualification': qualification,
+      'language': languages,
+      'joningdate': joningdate,
+      'bloodgroup': bloodgroup,
+    };
+    teacher.push(teacherlist)
+
+    localStorage.setItem("teacher", JSON.stringify(teacher));
+
+   
       debugger;
       window.location.href = "teacher_list.html";
     }

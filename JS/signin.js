@@ -1,10 +1,13 @@
 $(document).ready(function () {
+  signin =localStorage.getItem("signup")?JSON.parse(localStorage.getItem("signup")):[];
+console.log(signin)
   $("#submit").click(function (e) {
     e.preventDefault();
     let email = $("#email").val();
     let password = $("#password").val();
     let check = $("#checkbox:checked");
     $(".error").remove();
+    
     if (email.length < 1) {
       $("#errorEmail").after(
         '<span class="error">This field is required</span>'
@@ -37,15 +40,14 @@ $(document).ready(function () {
     }
     let result = { email, password, valid };
     console.log(result);
-    var retrievedObject = localStorage.getItem("testObject");
-    var obj = JSON.parse(retrievedObject);
-    if (valid) {
-      if (obj.email == email && obj.conformPassword == password) {
-        debugger;
+    for (let i = 0; i < signin.length; i++) {
+      if (signin[i].email == email && signin[i].conformPassword == password) {
+
         window.location.href = "/HTML/home.html";
-      } else {
-        $("label").after('<div class="error">Please enter registerd email address</div>');
+    }else {
+          // $("label").after('<div class="error">Please enter registerd email address and password</div>');
+          alert("Please enter registerd email address and password")
+        }
       }
-    }
   });
 });

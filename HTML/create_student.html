@@ -5,6 +5,7 @@
     <title>Create Student</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/383ab0b775.js" crossorigin="anonymous"></script>
@@ -22,7 +23,6 @@
     <nav class="navbar navbar-expand-lg nav  bg-lightgray ">
         <div class="container  ">
             <img src="assets/logo.png" alt="" class="d-inline-block align-middle img_height ">
-
             <button class="navbar-toggler " type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -33,27 +33,26 @@
                     </li>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link  text-dark dropdown-toggle  " data-bs-toggle="dropdown">Teachers</a>
-                        <div class="dropdown-menu bg-lightgray">
-                            <a href="teacher_list.html" class="dropdown-item ">Teacher List</a>
+                        <div class="dropdown-menu ">
+                            <a href="teacher_list.html" class="dropdown-item ">Teachers List</a>
                             <a href="create_teacher.html" class="dropdown-item ">Create Teacher </a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link  text-dark  fw-bold active dropdown-toggle "
+                        <a href="#" class="nav-link  text-dark  fw-bold bottom dropdown-toggle "
                             data-bs-toggle="dropdown">Students</a>
-                        <div class="dropdown-menu bg-lightgray">
+                        <div class="dropdown-menu ">
                             <a href="student_list.html" class="dropdown-item ">Students List</a>
                             <a href="create_student.html" class="dropdown-item ">Create Student </a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link   text-dark dropdown-toggle " data-bs-toggle="dropdown">Workers</a>
-                        <div class="dropdown-menu bg-lightgray">
+                        <div class="dropdown-menu">
                             <a href="worker_list.html" class="dropdown-item ">Workers List</a>
                             <a href="create_worker.html" class="dropdown-item ">Create Worker </a>
                         </div>
                     </div>
-
                     <li class="nav-item">
                         <a class="nav-link btn text-dark" href="signin.html">Logout</a>
 
@@ -65,120 +64,121 @@
     <div class="container mt-5">
         <div class="row">
             <div class=" d-flex justify-content-between">
-                <span class=" fw-bold fs-3"><u>Create Student </u></span><a href="/HTML/student_list.html"
-                    class="btn btn-primary px-4 py-2">Back</a>
+                <span class=" fw-bold fs-3">
+                    <u>Create Student </u>
+                </span>
+                <a href="/HTML/student_list.html" class="btn btn-primary px-4 py-2">Back</a>
             </div>
-            <div class="col-md-12 mt-3">
-
-                <form>
-                    <div class="row mb-3 ">
-                        <div class="col-sm-12 col-md-4">
-                            <input type="text" class="form-control " id="name" placeholder="Name">
-                        </div>
-                        <div class="col-sm-12 col-md-4">
-
-                            <input type="text" class="form-control" id="fatherName" placeholder="Father name">
-                        </div>
-                        <div class="col-sm-12 col-md-4">
-
-                            <input type="text" class="form-control" id="motherName" placeholder="Mother name">
-                        </div>
-
-                        <div class="col-sm-12 col-md-4">
-                            <input type="text" class="form-control" id="standard" placeholder="Standard">
-                        </div>
-                        <div class="col-sm-12 col-md-4">
-                            <input type="text" class="form-control" id="phoneNumber" placeholder="Phone number">
-                        </div>
-                        <div class="col-sm-12  col-md-4" >
-                            <div class="genderErrorId">
-                            <label class="ps-2 pt-3" >Gender :</label>
-
+        </div>
+        <div class="col-md-12 mt-3">
+            <form>
+                <div class="row mb-3 ">
+                    <div class="col-sm-12 col-md-4">
+                        <input type="text" class="form-control " id="name" placeholder="Name">
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <input type="text" class="form-control" id="fatherName" placeholder="Father name">
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <input type="text" class="form-control" id="motherName" placeholder="Mother name">
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <input type="text" class="form-control" id="standard" placeholder="Standard">
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <input type="text" class="form-control" id="phoneNumber" placeholder="Phone number">
+                    </div>
+                    <div class="col-sm-12  col-md-4">
+                        <div class="genderErrorId">
+                            <label class="ps-2 pt-3">Gender :</label>
                             <input type="radio" name="gender" value="Male" class="ms-4" />Male
                             <input type="radio" name="gender" value="Female" class="ms-4" />Female
                         </div>
-                        </div>
-                        <div class="col-sm-12 col-md-4">
-                            <textarea class="form-control" id="address" placeholder="Address" rows="4"></textarea>
-                        </div>
-                        <div class="col-sm-12 col-md-8">
-                            <div class="row">
-                                <div class="col-sm-12  col-md-6">
-                                    <input type="text" class="form-control" id="city" placeholder="City">
-                                </div>
-                                <div class="col-sm-12  col-md-6">
-                                    <input type="text" class="form-control" id="state" placeholder="State">
-                                </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <textarea class="form-control" id="address" placeholder="Address" rows="4"></textarea>
+                    </div>
+                    <div class="col-sm-12 col-md-8">
+                        <div class="row">
+                            <div class="col-sm-12  col-md-6">
+                                <input type="text" class="form-control" id="city" placeholder="City">
                             </div>
-                            <div class="row">
-                                <div class="col-sm-12  col-md-6 ">
-                                    <input type="text" class="form-control" id="pinCode" placeholder="Pin code">
-                                </div>
+                            <div class="col-sm-12  col-md-6">
+                                <input type="text" class="form-control" id="state" placeholder="State">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12  col-md-6 ">
+                                <input type="text" class="form-control" id="pinCode" placeholder="Pin code">
+                            </div>
 
-                                <div class="col-md-6 pt-2 ">
-                                  <div id="language">
+                            <div class="col-md-6 pt-2 ">
+                                <div id="language">
                                     <label class="ps-2">Language :</label>
-                                    <input type="checkbox" name="language" class="language" value="English">English
-                                    <input type="checkbox" name="language" class="language" value="Tamil">Tamil
-                                    <input type="checkbox" name="language" class="language" value="Hindhi">Hindhi
+                                    <input type="checkbox" class="language" value="English">English
+                                    <input type="checkbox" class="language" value="Tamil">Tamil
+                                    <input type="checkbox" class="language" value="Hindhi">Hindhi
                                 </div>
-                                </div>
-
                             </div>
-                        </div>
-                        <div class="col-sm-12  col-md-4"><label class="ps-3">Date Of Birth*</label>
-                            <input type="date" class="form-control date" id="dob" placeholder="date">
-                        </div>
-                        <div class="col-sm-12  col-md-4">
-                            <div><label class="ps-2">Blood Group*</label></div>
-                            <select class="form-select" id="bloodGroup">
-                                <option value="">Select your blood group </option>
-                                <option value="O+">O+</option>
-                                <option value="O-">O-</option>
-                                <option value="A+">A+</option>
-                                <option value="A-">A-</option>
-                                <option value="B+">B+</option>
-                                <option value="B-">B-</option>
-                                <option value="AB+">AB+</option>
-                                <option value="AB-">AB-</option>
-                            </select>
-                </form>
-            </div>
-        </div>
-<div class="col-sm-12">
-    <div class="table-responsive">
-        <table class="table table-bordered text-center table-responsive">
-            <div><label>Qualification</label></div>
-            <tr class="table-secondary">
-                <td scope="col">S.no</th>
-                <td scope="col">Examination</td>
-                <td scope="col">Board</td>
-                <td scope="col">Percentage</td>
-                <td scope="col">Year of Passing</td>
-            </tr>
-            <tr>
-               
-                    <td scope="row">1</td>
-                    <td>Class VIII</td>
-                    <td><input type="text" class="form-control border " id="eightBoard" /></td>
-                    <td><input type="text" class="form-control border " id="eightPercentage" /></td>
-                    <td><input type="text" class="form-control border " id="eigthPassing" /></td>
-            </tr>
-            <tr>
-                <td scope="row">2</td>
-                <td>Class X</td>
-                <td><input type="text" class="form-control border"  id="tenthBoard" /></td>
-                <td><input type="text" class="form-control border" id="tenthPercentage"/></td>
-                <td><input type="text" class="form-control border" id="tenthPassing" /></td>
 
-            </tr>
-        </table>
-    </div>
-    </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12  col-md-4"><label class="ps-3">Date Of Birth</label>
+                        <input type="date" class="form-control date" id="dob" placeholder="date">
+                    </div>
+                    <div class="col-sm-12  col-md-4">
+                        <div><label class="ps-2">Blood Group</label></div>
+                        <select class="form-select" id="bloodGroup">
+                            <option value="">Select your blood group </option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered text-center ">
+                            <div><label>Qualification</label></div>
+                            <tr class="table-secondary">
+                                <td scope="col">S.no</th>
+                                <td scope="col">Examination</td>
+                                <td scope="col">Board</td>
+                                <td scope="col">Percentage</td>
+                                <td scope="col">Year of Passing</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">1</td>
+                                <td>Class VIII</td>
+                                <td><input type="text" class="form-control border " id="eightBoard" /></td>
+                                <td><input type="text" class="form-control border " id="eightPercentage" /></td>
+                                <td><input type="text" class="form-control border " id="eigthPassing" /></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">2</td>
+                                <td>Class X</td>
+                                <td><input type="text" class="form-control border" id="tenthBoard" /></td>
+                                <td><input type="text" class="form-control border" id="tenthPercentage" /></td>
+                                <td><input type="text" class="form-control border" id="tenthPassing" /></td>
 
-        <div class="d-flex justify-content-end gap-3">
-            <a href="#" class="btn btn-danger px-3" id="cancel">Cancel</a>
-            <a href="#" class="btn btn-success px-3 " id="submit">Submit</a>
+                            </tr>
+                        </table>
+                        <div class="col-md-4">
+                            <input type="checkbox" placeholder="" id="check">If all information correct submit
+                            <span id=tick></span>
+                        </div>
+                        <div class="d-flex justify-content-end gap-3">
+                            <button type="reset" class="btn btn-danger px-3" id="cancel" value="cancel"> Cancel</button>
+                            <a href="#" class="btn btn-success px-3 " id="submit">Submit</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
     <div class=" footer mt-5 d-flex flex-column mb-0 py-4 px-4 px-xl-5 bg-lightgray ">

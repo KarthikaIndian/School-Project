@@ -5,7 +5,7 @@
   <title>Student List</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://kit.fontawesome.com/383ab0b775.js" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -15,6 +15,8 @@
     crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
   <link rel="stylesheet" href="/CSS/student_list.css">
+
+  <script src=”https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js”></script> 
 </head>
 
 <body>
@@ -30,22 +32,22 @@
           <li class="nav-item"><a class="nav-link text-dark" aria-current="page" href="home.html">Home</a></li>
           <div class="nav-item dropdown">
             <a href="#" class="nav-link  text-dark dropdown-toggle  " data-bs-toggle="dropdown">Teachers</a>
-            <div class="dropdown-menu bg-bg-lightgray">
-              <a href="teacher_list.html" class="dropdown-item ">Teacher List</a>
+            <div class="dropdown-menu ">
+              <a href="teacher_list.html" class="dropdown-item ">Teachers List</a>
               <a href="create_teacher.html" class="dropdown-item ">Create Teacher </a>
             </div>
           </div>
           <div class="nav-item dropdown">
-            <a href="#" class="nav-link  text-dark  fw-bold active dropdown-toggle "
+            <a href="#" class="nav-link  text-dark  fw-bold  bottom dropdown-toggle "
               data-bs-toggle="dropdown">Students</a>
-            <div class="dropdown-menu bg-bg-lightgray">
-              <a href="student_list.html" class="dropdown-item ">Student List</a>
+            <div class="dropdown-menu ">
+              <a href="student_list.html" class="dropdown-item ">Students List</a>
               <a href="create_student.html" class="dropdown-item ">Create Student</a>
             </div>
           </div>
           <div class="nav-item dropdown">
             <a href="#" class="nav-link   text-dark dropdown-toggle " data-bs-toggle="dropdown">Workers</a>
-            <div class="dropdown-menu bg-bg-lightgray">
+            <div class="dropdown-menu ">
               <a href="worker_list.html" class="dropdown-item ">Workers List</a>
               <a href="create_worker.html" class="dropdown-item ">Create Worker</a>
             </div>
@@ -59,15 +61,15 @@
   </nav>
   <div class="container">
     <div class=" row  ">
-      <div class="  d-flex  justify-content-between  p-0 mt-4 ">
-        <h3 class=" fw-bold">List of Students </h3>
-        <a href="create_student.html" class="btn btn-primary "><i class="fa-solid fa-plus pe-2 "></i>Add Student </a>
+      <div class="  d-flex  justify-content-between   mt-4 ">
+        <h3 class=" fw-bold">Students List </h3>
+        <a href="create_student.html" class="btn btn-primary "> <i class="fa-solid fa-user"></i><i class="fa-solid fa-plus pe-2 h5 "></i>Add Student </a>
       </div>
     </div>
     <div class="row mt-3 mb-2">
       <div class="col-sm-12 bg-muted">
         <div class="table-responsive">
-          <table class="m-auto table table-hover  mb-3">
+          <table class="m-auto table table-hover  mb-3" id="tbody">
             <tr class=" bg-secondary text-white fw-bold ">
               <th scope=" col">S.No</th>
               <th scope="col">Name</th>
@@ -77,78 +79,9 @@
               <th scope="col">Phone Number</th>
               <th scope="col">Blood Group</th>
             </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Akaran</td>
-              <td>N.Aravindhan</td>
-              <td>28/05/2020</td>
-              <td>P.K.G</td>
-              <td>9943626689</td>
-              <td>O<sup>+</sup></td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>S.Jaiveer</td>
-              <td>S.Subandhiran</td>
-              <td>05/05/2016</td>
-              <td>II Standard</td>
-              <td>9743623586</td>
-              <td>AB<sup>+</sup></td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>K.Rethula Sri</td>
-              <td>T.KaveriSelvan</td>
-              <td>22/03/2017</td>
-              <td>I Standard</td>
-              <td>7146626683</td>
-              <td>O<sup>+</sup></td>
-            </tr>
-            <tr>
-              <th scope="row">4</th>
-              <td>S.Aruli</td>
-              <td>S.Sasikumar</td>
-              <td>12/07/2007</td>
-              <td>XII Standard</td>
-              <td>9790237822</td>
-              <td>AB<sup>+</sup></td>
-            </tr>
-            <tr>
-              <th scope="row">5</th>
-              <td>S.Yazhini</td>
-              <td>S.Sasikumar</td>
-              <td>12/10/2010</td>
-              <td>VIII Standard</td>
-              <td>8531850636</td>
-              <td>O<sup>+</sup></td>
-            </tr>
-            <tr>
-              <th scope="row">6</th>
-              <td>S.Nandha Kumar</td>
-              <td>S.Sasikumar</td>
-              <td>08/05/2011</td>
-              <td>VIII Standard</td>
-              <td>9787256419</td>
-              <td>A<sup>+</sup></td>
-            </tr>
-            <tr>
-              <th scope="row">7</th>
-              <td>C.Kaviyarasan</td>
-              <td>K.Venba</td>
-              <td>09/07/2012</td>
-              <td>V Standard</td>
-              <td>9945371890</td>
-              <td>O<sup>+</sup></td>
-            </tr>
-            <tr>
-              <th scope="row">8</th>
-              <td>D.Tamilvanan</td>
-              <td>T.Dharunika</td>
-              <td>28/12/2011</td>
-              <td>VI Standard</td>
-              <td>9846437829</td>
-              <td>B<sup>+</sup></td>
-            </tr>
+            <tbody id="tbody">
+             
+            </tbody>
           </table>
         </div>
         <nav aria-label="..." class="d-flex justify-content-end mb-3">
@@ -169,10 +102,11 @@
       </div>
     </div>
   </div>
-  <div class=" footer  d-flex flex-column mb-0 py-4 px-4 px-xl-5 mt-4 bg-bg-lightgray ">
+  <div class=" footer  d-flex flex-column mb-0 py-4 px-4 px-xl-5 mt-3 bg-lightgray fixed-bottom ">
     <div class="text-center mb-md-0 ">
       Copyright © 2022. All rights reserved.
     </div>
   </div>
+  <script src="/JS/student.js"></script>
 </body>
 </html>

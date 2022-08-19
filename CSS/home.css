@@ -1,32 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Roboto:wght@100;400;700&display=swap');
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto';
 }
-
-.bg-lightgray{
-    border-bottom: 1px solid #adb0b31c ;
-    background-color: #adb0b31c ;
-
+.bg-lightgray {
+    border-bottom: 1px solid #adb0b31c;
+    background-color: #adb0b31c;
 }
-.card img{
+.card img {
     height: 200px;
 }
-.active:hover{
-color: brown;
-}
-
-.img_height{
+.img_height {
     height: 40px;
-
 }
-.active{
+.bottom {
     border-bottom: 3px solid purple !important;
 }
-.nav-item a:hover{
+.nav-item a:hover {
     background-color: rgb(187, 194, 240);
-   font-weight: bolder;
-  }
-  
+    font-weight: bolder;
+}
+@media (min-width:320px) and(max-width:490px) {
+    .bottom {}
+
+}

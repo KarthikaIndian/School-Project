@@ -1,4 +1,6 @@
 $(document).ready(function () {
+  
+  signup=[]
   $("#submit").click(function (e) {
     e.preventDefault();
     let uname = $("#name").val();
@@ -52,7 +54,9 @@ $(document).ready(function () {
       password: password,
       conformPassword: conformPassword,
     };
-    localStorage.setItem("testObject", JSON.stringify(testObject));
+    signup.push(testObject)
+    localStorage.setItem("signup", JSON.stringify(signup));
+    
     if (valid) {
       debugger;
       window.location.href = "signin.html";
