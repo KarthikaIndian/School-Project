@@ -1,12 +1,15 @@
 $(document).ready(function () {
-  signin =localStorage.getItem("signup")?JSON.parse(localStorage.getItem("signup")):[];
-console.log(signin)
+ 
+//   signin =localStorage.getItem("signup")?JSON.parse(localStorage.getItem("signup")):[];
+// console.log(signin)
   $("#submit").click(function (e) {
+    signin=[];
     e.preventDefault();
     let email = $("#email").val();
     let password = $("#password").val();
     let check = $("#checkbox:checked");
     $(".error").remove();
+    let id=$("#newid").val();
     
     if (email.length < 1) {
       $("#errorEmail").after(
@@ -40,14 +43,36 @@ console.log(signin)
     }
     let result = { email, password, valid };
     console.log(result);
-    for (let i = 0; i < signin.length; i++) {
-      if (signin[i].email == email && signin[i].conformPassword == password) {
+    // for (let i = 0; i < signin.length; i++) {
+    //   if (signin[i].email == email && signin[i].conformPassword == password) {
 
-        window.location.href = "/HTML/home.html";
-    }else {
-          // $("label").after('<div class="error">Please enter registerd email address and password</div>');
-          alert("Please enter registerd email address and password")
-        }
-      }
+    //     window.location.href = "/HTML/home.html";
+    // }else {
+    //       alert("Please enter registerd email address and password")
+    //     }
+    //   }
+
+      $.ajax({
+        url: "https://62ff38cb34344b6431f4c29e.mockapi.io/user/"+id,
+        method: "get",
+        dataType: "json",
+        success: function (result) {
+          console.log(result)
+          for(let i=0;i<result.length;i++){
+            if (result[i].email == email && result[i].conformPassword == password) {
+              window.location.href = "/HTML/home.html";
+              
+          }else {
+                alert("Please enter registerd email address and password")
+              
+              }
+          }
+        },
+        error: function (error) {
+          console.log(error);
+        },
+      });
   });
+ 
 });
+

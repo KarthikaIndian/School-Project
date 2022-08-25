@@ -1,6 +1,7 @@
+signup=[]
 $(document).ready(function () {
   
-  signup=[]
+ 
   $("#submit").click(function (e) {
     e.preventDefault();
     let uname = $("#name").val();
@@ -54,12 +55,27 @@ $(document).ready(function () {
       password: password,
       conformPassword: conformPassword,
     };
-    signup.push(testObject)
-    localStorage.setItem("signup", JSON.stringify(signup));
+    $.ajax({
+      url: "https://62ff38cb34344b6431f4c29e.mockapi.io/user",
+      method: "post",
+      data:testObject,
+      dataType: "json",
+
+      success: function (result) {
+alert("Registration successfully")
+window.location.href = "signin.html";
+      },
+
+      error: function (error) {
+        console.log(error);
+      },
+    });
+    // signup.push(testObject)
+    // localStorage.setItem("signup", JSON.stringify(signup));
     
-    if (valid) {
-      debugger;
-      window.location.href = "signin.html";
-    }
+    // if (valid) {
+    //   debugger;
+    //   window.location.href = "signin.html";
+    // }
   });
 });

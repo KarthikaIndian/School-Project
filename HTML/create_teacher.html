@@ -67,6 +67,8 @@
             </div>
 <form>
             <div class="row mt-2">
+                <input type="hidden" class="form-control" placeholder="First name" id="newid">
+
                 <div class="col-md-4">
                     <input type="text" class="form-control" placeholder="First name" id="firstName">
                 </div>
@@ -109,8 +111,8 @@
                     <input type="text" class="form-control" placeholder="Qualification" id="qualification">
                 </div>
                 <div class="col-md-4 ps-3 pt-1"><label>Gender :</label>
-                    <input type="radio" name="gender" value="Male" class="ms-4 gender" />Male
-                    <input type="radio" name="gender" value="Female" class="ms-4 gender" />Female<br>
+                    <input type="radio" name="gender" value="Male" class="ms-4 gender" id="male" />Male
+                    <input type="radio" name="gender" value="Female" class="ms-4 gender" id="female" />Female<br>
                     <span id="genderErrorId"></span>
                 </div>
                 <div class="col-md-4 ">
@@ -142,6 +144,7 @@
                     <span id=tick></span>
                 </div>
                 <div class="d-flex justify-content-end gap-3">
+                    <input type="hidden" class="form-control" value="API" id="type">
                     <button class="btn  btn-danger  px-3" type="reset">Cancel</button>
                     <button class="btn btn-success  px-3" type="button" id="submit">Submit</button>
                 </div>

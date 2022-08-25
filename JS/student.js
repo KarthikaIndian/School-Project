@@ -1,15 +1,10 @@
+let students = [];
 $(document).ready(function () {
- student =localStorage.getItem("student")?JSON.parse(localStorage.getItem("student")):[];
-  let j=1;
-  console.log(student)
-  for (let i = 0; i < student.length; i++) {
-    let date=student[i].dob;
-   var dateAr = date.split('-');
-var date_string = dateAr[2] + '-' + dateAr[1] + '-' + dateAr[0];
-        let row="<tr><td>"+j++ +"</td><td>"+student[i].studentname+"</td><td>"+student[i].fathername+"</td><td>"
-      +date_string+"</td><td>"+student[i].standard+"</td><td>"+student[i].phonenumber+"</td><td>"+student[i].bloodgroup+"</td></tr>";
-  
-       $("#tbody").append(row)
+  let searchParams=new URLSearchParams(window.location.search)
+  let param=searchParams.get('id')
+  if(param!=""){
+    getEdit(param)
+    
   }
   $("#submit").click(function (e) {
     e.preventDefault();
@@ -23,8 +18,8 @@ var date_string = dateAr[2] + '-' + dateAr[1] + '-' + dateAr[0];
     let city = $("#city").val();
     let state = $("#state").val();
     let pincode = $("#pinCode").val();
-    let language= $(".language").is(":checked");;
-    let dob =$("#dob").val();
+    let language = $(".language").is(":checked");
+    let dob = $("#dob").val();
     let bloodgroup = $("#bloodGroup").val();
     let eightboard = $("#eightBoard").val();
     let eightpercentage = $("#eightPercentage").val();
@@ -33,11 +28,12 @@ var date_string = dateAr[2] + '-' + dateAr[1] + '-' + dateAr[0];
     let tenthpercentage = $("#tenthPercentage").val();
     let tenthpassing = $("#tenthPassing").val();
     let check = $("#check:checked");
+    let id = $("#newid").val();
+
     if (language) {
       var languages = [];
       $(".language:checked").each(function (i) {
-        language[i] = $(this).val();
-       
+        languages[i] = $(this).val();
       });
     }
     $(".error").remove();
@@ -49,7 +45,9 @@ var date_string = dateAr[2] + '-' + dateAr[1] + '-' + dateAr[0];
       flag = true;
     }
     if (fathername.length < 1) {
-      $("#fatherName").after('<span class="error">This field is required</span>');
+      $("#fatherName").after(
+        '<span class="error">This field is required</span>'
+      );
       flag = false;
     } else {
       flag = true;
@@ -112,12 +110,14 @@ var date_string = dateAr[2] + '-' + dateAr[1] + '-' + dateAr[0];
     } else {
       flag = true;
     }
-    if(language==" "){
-      $("#language").after('<span class="error">Please choose atleast 2 laguages</span>');
+    if (language == " ") {
+      $("#language").after(
+        '<span class="error">Please choose atleast 2 laguages</span>'
+      );
       flag = false;
-  } else{
+    } else {
       flag = true;
-  }
+    }
     if (dob < 1) {
       $("#dob").after('<span class="error">This field is required</span>');
       flag = false;
@@ -139,41 +139,185 @@ var date_string = dateAr[2] + '-' + dateAr[1] + '-' + dateAr[0];
       flag = true;
     }
     let Address = { address, city, state, pincode };
-    let Eight_Standard = { eightboard, eightpercentage, eigthpassing };
-    let Tenth_Standard = { tenthboard, tenthpercentage, tenthpassing };
-    let Qualification = { Eight_Standard, Tenth_Standard };
-    let result = { studentname,
-      fathername,
-      mothername,
-      phonenumber,
-      standard,
-      gender,
-      Address,
-      language,
-      dob,
-      bloodgroup,
-      Qualification,
-    };
-    if (flag) {
-    let studentList = { studentname:studentname,
-      fathername:fathername,
-      mothername:mothername,
-      phonenumber:phonenumber,
-      standard:standard,
-      dob:dob,
-      bloodgroup:bloodgroup,
-      Qualification:Qualification,
-      Address:Address
-    };
-    student.push(studentList)
+    // let eight_Standard = { eightboard, eightpercentage, eigthpassing };
+    // let tenth_Standard = { tenthboard, tenthpercentage, tenthpassing };
+    // let qualification = { eight_Standard, tenth_Standard };
 
-    localStorage.setItem("student", JSON.stringify(student));
+    let studentList = {
+      id: id,
+      studentname: studentname,
+      fathername: fathername,
+      mothername: mothername,
+      phonenumber: phonenumber,
+      standard: standard,
+      dob: dob,
+      state:state,
+      city:city,
+      pincode:pincode,
+      bloodgroup: bloodgroup,
+      address: address,
+      eightboard:eightboard,
+      eightpercentage:eightpercentage,
+      eigthpassing:eigthpassing,
+      tenthboard:tenthboard,
+      tenthpercentage:tenthpercentage,
+      tenthpassing:tenthpassing
+    };
+if(id!=""){
+  update(studentList)
+}else{
+    $.ajax({
+      url: "https://62ff38cb34344b6431f4c29e.mockapi.io/student",
+      method: "post",
+      data: studentList,
+      dataType: "json",
 
-    console.log(result);
- 
-      debugger;
-      window.location.href = "student_list.html";
-    }
+      success: function (result) {
+        students.push(result);
+
+        onloadfromAPI(students);
+        window.location.href = "/HTML/student_list.html";
+      },
+
+      error: function (error) {
+        console.log(error);
+      },
+    });
+  }
   });
+  onloadfromAPI(students);
 });
 
+function updatetable(students) {
+  $("#tbody").html("")
+  for (let i = 0; i < students.length; i++) {
+    let date = students[i].dob;
+    var dateAr = date.split("-");
+    var date_string = dateAr[2] + "-" + dateAr[1] + "-" + dateAr[0];
+    let row =
+      "<tr><td>" +
+      students[i].id +
+      "</td><td>" +
+      students[i].studentname +
+      "</td><td>" +
+      students[i].fathername +
+      "</td><td>" +
+      date_string +
+      "</td><td>" +
+      students[i].standard +
+      "</td><td>" +
+      students[i].phonenumber +
+      "</td><td>" +
+      students[i].bloodgroup + 
+     
+       "</td><td><button type='button' class='  text-white btn btn-warning' onclick='getEditWindow(" +
+      i +
+      "," +
+      students[i].id +
+      ")'>Edit</button></td><td><button type='button' class='btn btn-danger' onclick='deleteRow(" +
+      i +
+      "," +
+      students[i].id +
+      ")'>Delete</button></td></tr>";
+
+    $("#tbody").append(row);
+  }
+}
+
+function onloadfromAPI() {
+  $.ajax({
+    url: "https://62ff38cb34344b6431f4c29e.mockapi.io/student",
+    method: "get",
+    dataType: "json",
+    success: function (result) {
+      students=result;
+      updatetable(result);
+    },
+    error: function (error) {
+      console.log(error);
+    },
+  });
+}
+function deleteRow(index , student_id){
+  $.ajax({
+    url: "https://62ff38cb34344b6431f4c29e.mockapi.io/student/" +student_id,
+    method:"delete",
+    dataType:"json",
+    success:function(result){
+      students.splice(index,1);
+      onloadfromAPI(students);
+    },
+  error: function (error) {
+    console.log(error);
+  },
+
+
+    
+  })
+}
+function getEdit(id){
+  $.ajax({
+     url: "https://62ff38cb34344b6431f4c29e.mockapi.io/student/" +id,
+     method:"get",
+     dataType:"json",
+     success:function(result){
+       
+   $("#newid").val(result.id);
+   $("#name").val(result.studentname);
+   $("#fatherName").val(result.fathername);
+   $("#motherName").val(result.mothername);
+   $("#standard").val(result.standard);
+   $("#phoneNumber").val(result.phonenumber);
+   $("#address").val(result.address);
+  $("#city").val(result.city);
+   $("#state").val(result.state);
+   $("#pinCode").val(result.pincode);
+    $(".language").is(":checked");
+  $("#dob").val(result.dob);
+    $("#bloodGroup").val(result.bloodgroup);
+    $("#eightBoard").val(result.eightboard);
+   $("#eightPercentage").val(result.eightpercentage);
+   $("#eigthPassing").val(result.eigthpassing);
+$("#tenthBoard").val(result.tenthboard);
+    $("#tenthPercentage").val(result.tenthpercentage);
+   $("#tenthPassing").val(result.tenthpassing);
+   if(result.gender=="Male"){
+    $("#male").prop("checked", true);
+  }else{
+    $("#female").prop("checked", true);
+
+  }
+   alert(result.id)
+ 
+     },
+   error: function (error) {
+     console.log(error);
+   },
+ 
+ 
+     
+   })
+ }
+function getEditWindow(index,id){
+  window.location.href= "create_student.html?id="+id;
+
+}
+
+function update(studentList){
+  $.ajax({
+    url: "https://62ff38cb34344b6431f4c29e.mockapi.io/student/" + studentList.id,
+    method: "put",
+    data: studentList,
+    dataType: "json",
+    success: function (result) {
+      students.push(result);
+
+      onloadfromAPI(students);
+      window.location.href = "/HTML/student_list.html";
+
+    },
+    error: function (error) {
+      console.log(error);
+    },
+  });
+}

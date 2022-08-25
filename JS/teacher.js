@@ -1,19 +1,10 @@
+let teachers = [];
 $(document).ready(function () {
-//   $('#table').DataTable({
-//     pagingType: 'full_numbers',
-// });
-  teacher =localStorage.getItem("teacher")?JSON.parse(localStorage.getItem("teacher")):[];
-  let j=1;
-  for (let i = 0; i < teacher.length; i++) {
-    let date=teacher[i].joningdate;
-    var dateAr = date.split('-');
- var date_string = dateAr[2] + '-' + dateAr[1] + '-' + dateAr[0];
-      let row="<tr><td>"+j++ +"</td><td>"+teacher[i].name+"</td><td>"+teacher[i].phonenumber+"</td><td>"+teacher[i].email+
-      "</td><td>"+teacher[i].qualification+"</td><td>"+date_string+"</td></tr>";
-  
-       $("#tbody").append(row)
+  let searchParams = new URLSearchParams(window.location.search);
+  let param = searchParams.get("id");
+  if (param != null) {
+    getEdit(param);
   }
- 
   $("#submit").click(function (e) {
     e.preventDefault();
     let name = $("#firstName").val();
@@ -31,6 +22,8 @@ $(document).ready(function () {
     let address = $("#address").val();
     let pincode = $("#pincode").val();
     let joningdate = $("#joiningDate").val();
+    let id = $("#newid").val();
+
     let check = $("#check:checked");
     let flag = false;
     let regEx =
@@ -40,7 +33,8 @@ $(document).ready(function () {
     if (language) {
       var languages = [];
       $(".language:checked").each(function (i) {
-        language[i] = $(this).val();
+        languages[i] = $(this).val();
+        alert(languages);
       });
     }
     if (name.length < 1) {
@@ -173,48 +167,173 @@ $(document).ready(function () {
     } else {
       flag = true;
     }
-    // $(".first-tr").after( '<tr><td>'+name+'</td><td>'+phoneNumber+'</td><td>'+email+'</td><td>'
-    // +bloodGroup+'</td><td>'+age+'</td><td>'+experience+
-    // '</td><td>'+qualification+'</td><td>'+state+'</td><td>'+country+'</td><td>'+language+'</td><td>'
-    // +Address+'</td><td>'+DoB+'</td><td>'+jonningDate+'</td></tr>');
-    let Address = { address, state, country, pincode };
-    let result = {
-      name,
-      phoneNumber,
-      email,
-      bloodgroup,
-      age,
-      experience,
-      gender,
-      qualification,
-      Address,
-      languages,
-      joningdate,
-    };
-    console.log(result);
-    if (flag) {
-    
+
+    // let Address = { address, state, country, pincode };
+
     let teacherlist = {
-      'name': name,
-      'lastname': lastname,
-      'gender': gender,
-      'phonenumber': phonenumber,
-     'email': email,
-      'age': age,
-      'address': Address,
-      'experience': experience,
-      'qualification': qualification,
-      'language': languages,
-      'joningdate': joningdate,
-      'bloodgroup': bloodgroup,
+      id: id,
+      name: name,
+      lastname: lastname,
+      gender: gender,
+      phonenumber: phonenumber,
+      email: email,
+      age: age,
+      address: address,
+      experience: experience,
+      qualification: qualification,
+      languages: languages,
+      joningdate: joningdate,
+      bloodgroup: bloodgroup,
+      state:state,
+      country:country,
+      pincode:pincode
     };
-    teacher.push(teacherlist)
 
-    localStorage.setItem("teacher", JSON.stringify(teacher));
+    if (id != "") {
+      update(teacherlist);
+    } else {
+      $.ajax({
+        url: "https://62ff38cb34344b6431f4c29e.mockapi.io/teacher",
+        method: "post",
+        data: teacherlist,
+        dataType: "json",
 
-   
-      debugger;
-      window.location.href = "teacher_list.html";
+        success: function (result) {
+          teachers.push(result);
+          onloadfromAPI(teachers);
+          window.location.href = "/HTML/teacher_list.html";
+        },
+
+        error: function (error) {
+          console.log(error);
+        },
+      });
     }
   });
+
+  onloadfromAPI(teachers);
 });
+function updatetable(teachers) {
+  $("#tbody").html("");
+
+  for (let i = 0; i < teachers.length; i++) {
+    let date = teachers[i].joningdate;
+    var dateAr = date.split("-");
+    var date_string = dateAr[2] + "-" + dateAr[1] + "-" + dateAr[0];
+    let row =
+      "<tr><td>" +
+      teachers[i].id +
+      "</td><td>" +
+      teachers[i].name +
+      "</td><td>" +
+      teachers[i].phonenumber +
+      "</td><td>" +
+      teachers[i].email +
+      "</td><td>" +
+      teachers[i].qualification + 
+      "</td><td>" +
+      date_string +
+
+      "</td><td><button type='button' class='  text-white btn btn-warning' onclick='getEditWin(" +
+      i +
+      "," +
+      teachers[i].id +
+      ")'>Edit</button></td><td><button type='button' class='btn btn-danger' onclick='deleteRow(" +
+      i +
+      "," +
+      teachers[i].id +
+      ")'>Delete</button></tr>";
+
+    $("#tbody").append(row);
+  }
+}
+
+function onloadfromAPI() {
+  $.ajax({
+    url: "https://62ff38cb34344b6431f4c29e.mockapi.io/teacher",
+    method: "get",
+    dataType: "json",
+    success: function (result) {
+      updatetable(result);
+    },
+    error: function (error) {
+      console.log(error);
+    },
+  });
+}
+function deleteRow(index, teacher_id) {
+  $.ajax({
+    url: "https://62ff38cb34344b6431f4c29e.mockapi.io/teacher/" + teacher_id,
+    method: "delete",
+    dataType: "json",
+    success: function (result) {
+      teachers.splice(index, 1);
+      onloadfromAPI(teachers);
+    },
+    error: function (error) {
+      console.log(error);
+    },
+  });
+}
+function getEdit(id) {
+  $.ajax({
+    url: "https://62ff38cb34344b6431f4c29e.mockapi.io/teacher/" + id,
+    method: "get",
+    dataType: "json",
+    success: function (result) {
+      $("#newid").val(result.id);
+      $("#firstName").val(result.name);
+      $("#lastName").val(result.lastname);
+      $("#phoneNumber").val(result.phonenumber);
+      $("#emailId").val(result.email);
+      $("#bloodGroup").val(result.bloodgroup);
+      $("#age").val(result.age);
+      $("#experiance").val(result.experience);
+      $("#qualification").val(result.qualification);
+      $("#state").val(result.state);
+      $("#country").val(result.country);
+      $("#address").val(result.address);
+      $("#pincode").val(result.pincode);
+      $("#joiningDate").val(result.joningdate);
+      //   let lan=result.languages;
+      //   alert(lan);
+
+      //   for(var i=0; i <lan; i++){
+      //   alert(lan[i]);
+      //   $(".language").prop("checked", true);
+
+      //  }
+
+      if (result.gender == "Male") {
+        $("#male").prop("checked", true);
+      } else {
+        $("#female").prop("checked", true);
+      }
+    },
+    error: function (error) {
+      console.log(error);
+    },
+  });
+}
+
+function getEditWin(index, id) {
+  window.location.href="create_teacher.html?id=" + id;
+}
+function update(teacherlist) {
+  $.ajax({
+    url:
+      "https://62ff38cb34344b6431f4c29e.mockapi.io/teacher/" + teacherlist.id,
+    method: "put",
+    data: teacherlist,
+    dataType: "json",
+    success: function (result) {
+      teachers.push(result);
+
+      onloadfromAPI(teachers);
+       window.location.href="/HTML/teacher_list.html"
+    },
+    error: function (error) {
+      console.log(error);
+    },
+  });
+}

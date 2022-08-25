@@ -1,4 +1,5 @@
 <!doctype html>
+
 <html lang="en">
 
 <head>
@@ -18,48 +19,97 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg nav  bg-lightgray  ">
-        <div class="container ">
-            <img src="assets/logo.png" alt="" class="d-inline-block align-middle img_height ">
-            <button class="navbar-toggler text-dark " type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <i class="bi bi-list"></i></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0  ">
-                    <li class="nav-item"><a class="nav-link text-dark" aria-current="page" href="home.html">Home</a>
-                    </li>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link  text-dark dropdown-toggle   "
-                            data-bs-toggle="dropdown">Teachers</a>
-                        <div class="dropdown-menu">
-                            <a href="teacher_list.html" class="dropdown-item ">Teachers List</a>
-                            <a href="create_teacher.html" class="dropdown-item ">Create Teacher</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link  text-dark  dropdown-toggle  "
-                            data-bs-toggle="dropdown">Students</a>
-                        <div class="dropdown-menu ">
-                            <a href="student_list.html" class="dropdown-item ">Students List</a>
-                            <a href="create_student.html" class="dropdown-item ">Create Student</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link   text-dark fw-bold bottom dropdown-toggle "
-                            data-bs-toggle="dropdown">Workers</a>
-                        <div class="dropdown-menu">
-                            <a href="worker_list.html" class="dropdown-item ">Workers List</a>
-                            <a href="create_worker.html" class="dropdown-item ">Create Worker </a>
-                        </div>
-                    </div>
-                    <li class="nav-item">
-                        <a class="nav-link btn text-dark" href="signin.html">Logout</a>
-                    </li>
-                </ul>
-            </div>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+   Update
+  </button>
+  
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-    </nav>
+        <div class="modal-body">
+            <form>
+                <div class="col-md-12  mt-2">
+                    <div class="row mt-2 mb-2">
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" placeholder="First name" value="" id="newfirstName">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" value="" placeholder="Last name" id="newlastName">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" placeholder="Phone number" value="" id="newphoneNumber">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" placeholder="Email " value="" id="newemail">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" placeholder="Age" id="newage">
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-select" id="newexperiance">
+                                <option value="">Select your experiance </option>
+                                <option>0 - 1 Year</option>
+                                <option>1 - 2 year</option>
+                                <option>2 - 3 year</option>
+                                <option>3 - 4 year</option>
+                                <option>more then 5 year</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 ps-3 pt-1"><label>Gender :</label>
+                            <input type="radio" name="gender" value=" Male" class=" gender" />Male
+                            <input type="radio" name="gender" value=" Female" class=" gender" />Female<br>
+                            <span id="genderErrorId"></span>
+                        </div>
+                        <div class="col-sm-12  col-md-4">
+                            <select class="form-select " id="newbloodGroup">
+                                <option value="">Select your blood group </option>
+                                <option>O+</option>
+                                <option>O-</option>
+                                <option>A+</option>
+                                <option>A-</option>
+                                <option>B+</option>
+                                <option>B-</option>
+                                <option>AB+</option>
+                                <option>AB-</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-select " id="newjobPosition">
+                                <option value=""> Select your job position </option>
+                                <option>Driver</option>
+                                <option>Cleaner</option>
+                                <option>Attender </option>
+                                <option>watchman</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <textarea class="form-control" placeholder="Address " value="" id="newaddress"></textarea>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" placeholder="Pin code" value="" id="newpinCode">
+                        </div>
+                        <div class="col-md-4"><label>Joining Date</label>
+                            <input type="date" class="form-control date" value="" id="newjoiningDate">
+                        </div>
+                       
+                    </div>
+                   
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="update()" > submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
     <div class="container rounded  mt-4 ">
         <div class="row ">
             <div class=" d-flex justify-content-between">
@@ -133,13 +183,9 @@
                     <div class="col-md-4"><label>Joining Date</label>
                         <input type="date" class="form-control date" value="" id="joiningDate">
                     </div>
-                    <div class="col-md-6">
-                        <input type="checkbox" placeholder="" id="check">If all information correct submit
-                        <span id=tick></span>
-                    </div>
+                   
                 </div>
                 <div class="d-flex justify-content-end gap-3 ">
-                    <input type="hidden" class="form-control" value="api" id="type">
 
                     <button class="btn btn-danger px-3 " type="reset">Cancel</button>
                     <button class="btn btn-success px-3" type="button" id="submit">Submit</button>
@@ -147,6 +193,26 @@
             </div>
         </form>
     </div>
+    <div class="row mt-3 mb-2">
+        <div class="col-sm-12 bg-muted">
+          <div class="table-responsive">
+            <table class="m-auto table table-hover  mb-3" >
+              <tr class=" bg-secondary text-white fw-bold ">
+                <th scope="col">S.No</th>
+                <th scope="col">Name</th>
+                <th scope="col">Phone Number</th>
+  
+                <th scope="col">Email Id</th>
+                <th scope="col">Age</th>
+                <th scope="col">Job Position</th>
+                <th scope="col">Date of Joining</th>
+                <th>action</th>
+              </tr>
+              <tbody id="tbody">
+               
+              </tbody>
+            </table>
+          </div>
     <div class=" footer mt-5 d-flex flex-column mb-0 py-4 px-4 px-xl-5  bg-lightgray">
         <div class="text-center mb-md-0 ">
             Copyright © 2022. All rights reserved.
