@@ -58,8 +58,9 @@ $(document).ready(function () {
         dataType: "json",
         success: function (result) {
           console.log(result)
+          
           for(let i=0;i<result.length;i++){
-            if (result[i].email == email && result[i].conformPassword == password) {
+            if (result[i].id!="" && result[i].email == email && result[i].conformPassword == password) {
               window.location.href = "/HTML/home.html";
               
           }else {
